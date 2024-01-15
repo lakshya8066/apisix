@@ -108,7 +108,7 @@ function execute_func(premature, self, batch)
         return
     end
 
-    core.log.debug("Batch Processor[", self.name,
+    core.log.warn("Batch Processor[", self.name,
                    "] successfully processed the entries")
 end
 
