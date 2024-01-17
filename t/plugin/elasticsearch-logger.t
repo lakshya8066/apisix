@@ -239,17 +239,6 @@ passed
 
 
 
-# === TEST 5: test route (auth success)
-# --- request
-# GET /hello
-# --- wait: 2
-# --- response_body
-# hello world
-# --- error_log
-# Batch Processor[elasticsearch-logger] successfully processed the entries
-
-
-
 === TEST 5: set route (no auth)
 --- config
     location /t {
@@ -283,19 +272,6 @@ passed
     }
 --- response_body
 passed
-
-
-
-# === TEST 7: test route (no auth, failed)
-# --- request
-# GET /hello
-# --- wait: 2
-# --- response_body
-# hello world
-# --- error_log
-# Batch Processor[elasticsearch-logger] failed to process entries: elasticsearch server returned status: 401
-# "reason":"missing authentication credentials for REST request [/_bulk]"
-# Batch Processor[elasticsearch-logger] exceeded the max_retry_count
 
 
 
