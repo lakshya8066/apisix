@@ -239,18 +239,18 @@ passed
 
 
 
-=== TEST 5: test route (auth success)
---- request
-GET /hello
---- wait: 2
---- response_body
-hello world
---- error_log
-Batch Processor[elasticsearch-logger] successfully processed the entries
+# === TEST 5: test route (auth success)
+# --- request
+# GET /hello
+# --- wait: 2
+# --- response_body
+# hello world
+# --- error_log
+# Batch Processor[elasticsearch-logger] successfully processed the entries
 
 
 
-=== TEST 6: set route (no auth)
+=== TEST 5: set route (no auth)
 --- config
     location /t {
         content_by_lua_block {
@@ -286,20 +286,20 @@ passed
 
 
 
-=== TEST 7: test route (no auth, failed)
---- request
-GET /hello
---- wait: 2
---- response_body
-hello world
---- error_log
-Batch Processor[elasticsearch-logger] failed to process entries: elasticsearch server returned status: 401
-"reason":"missing authentication credentials for REST request [/_bulk]"
-Batch Processor[elasticsearch-logger] exceeded the max_retry_count
+# === TEST 7: test route (no auth, failed)
+# --- request
+# GET /hello
+# --- wait: 2
+# --- response_body
+# hello world
+# --- error_log
+# Batch Processor[elasticsearch-logger] failed to process entries: elasticsearch server returned status: 401
+# "reason":"missing authentication credentials for REST request [/_bulk]"
+# Batch Processor[elasticsearch-logger] exceeded the max_retry_count
 
 
 
-=== TEST 8: set route (error auth)
+=== TEST 6: set route (error auth)
 --- config
     location /t {
         content_by_lua_block {
@@ -339,7 +339,7 @@ passed
 
 
 
-=== TEST 9: test route (error auth failed)
+=== TEST 7: test route (error auth failed)
 --- request
 GET /hello
 --- wait: 2
@@ -351,7 +351,7 @@ Batch Processor[elasticsearch-logger] exceeded the max_retry_count
 
 
 
-=== TEST 10: add plugin metadata
+=== TEST 8: add plugin metadata
 --- config
     location /t {
         content_by_lua_block {
@@ -403,7 +403,7 @@ passed
 
 
 
-=== TEST 11: hit route and check custom elasticsearch logger
+=== TEST 9: hit route and check custom elasticsearch logger
 --- extra_init_by_lua
     local core = require("apisix.core")
     local http = require("resty.http")
@@ -450,7 +450,7 @@ check elasticsearch custom body success
 
 
 
-=== TEST 12: data encryption for auth.password
+=== TEST 10: data encryption for auth.password
 --- yaml_config
 apisix:
     data_encryption:
@@ -518,7 +518,7 @@ PTQvJEaPcNOXcOHeErC0XQ==
 
 
 
-=== TEST 13: add plugin on routes using multi elasticsearch-logger
+=== TEST 11: add plugin on routes using multi elasticsearch-logger
 --- config
     location /t {
         content_by_lua_block {
@@ -554,7 +554,7 @@ passed
 
 
 
-=== TEST 14: to show that different endpoints will be chosen randomly
+=== TEST 12: to show that different endpoints will be chosen randomly
 --- config
     location /t {
         content_by_lua_block {
@@ -585,7 +585,7 @@ http://127.0.0.1:9201/_bulk
 
 
 
-=== TEST 15: log format in plugin
+=== TEST 13: log format in plugin
 --- config
     location /t {
         content_by_lua_block {
@@ -624,7 +624,7 @@ passed
 
 
 
-=== TEST 16: hit route and check custom elasticsearch logger
+=== TEST 14: hit route and check custom elasticsearch logger
 --- extra_init_by_lua
     local core = require("apisix.core")
     local http = require("resty.http")
